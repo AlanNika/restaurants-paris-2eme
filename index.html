@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Les 5 Meilleurs Restaurants du 2ème Arrondissement de Paris</title>
+  <link rel="stylesheet" href="css/filter.css">
   <style>
     :root {
       --primary-color: #2c3e50;
@@ -145,6 +146,44 @@
       color: #777;
       font-size: 0.9rem;
     }
+
+    /* Styles pour le prix */
+    .price-tag {
+      display: inline-block;
+      color: #666;
+      font-weight: 500;
+      margin-left: 10px;
+    }
+
+    .price-tag span {
+      opacity: 0.4;
+    }
+
+    .price-tag.price-1 span:first-child,
+    .price-tag.price-2 span:first-child,
+    .price-tag.price-2 span:nth-child(2),
+    .price-tag.price-3 span:first-child,
+    .price-tag.price-3 span:nth-child(2),
+    .price-tag.price-3 span:nth-child(3) {
+      opacity: 1;
+    }
+
+    /* Styles pour les tags */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: var(--light-gray);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--primary-color);
+    }
     
     @media (max-width: 768px) {
       .container {
@@ -177,14 +216,98 @@
       <p class="subtitle">2ème Arrondissement de Paris</p>
     </header>
     
-    <div class="restaurant-card">
+    <!-- Section de filtrage -->
+    <section class="filter-section">
+      <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </svg>
+        Filtrer les restaurants
+      </h2>
+      
+      <button class="filter-toggle" id="filter-toggle">Afficher les filtres</button>
+      
+      <div class="filter-container" id="filter-container">
+        <div class="filter-group">
+          <h3>Type de cuisine</h3>
+          <div class="filter-options" id="cuisine-filter">
+            <!-- Les options seront générées dynamiquement par JavaScript -->
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <h3>Note minimale</h3>
+          <select class="rating-selector" id="rating-filter">
+            <option value="0">Toutes les notes</option>
+            <option value="4">4 étoiles et plus</option>
+            <option value="4.5">4.5 étoiles et plus</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <h3>Gamme de prix</h3>
+          <div class="price-buttons">
+            <div class="price-button">
+              <input type="checkbox" id="price-1" data-filter="price" value="1">
+              <label for="price-1">€</label>
+            </div>
+            <div class="price-button">
+              <input type="checkbox" id="price-2" data-filter="price" value="2">
+              <label for="price-2">€€</label>
+            </div>
+            <div class="price-button">
+              <input type="checkbox" id="price-3" data-filter="price" value="3">
+              <label for="price-3">€€€</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <h3>Régimes alimentaires</h3>
+          <div class="filter-options" id="dietary-filter">
+            <!-- Les options seront générées dynamiquement par JavaScript -->
+          </div>
+        </div>
+      </div>
+      
+      <button class="reset-button" id="reset-filters">Réinitialiser les filtres</button>
+    </section>
+    
+    <!-- Barre de résultats -->
+    <div class="results-bar">
+      <div class="results-count">
+        <span id="result-count">5</span> restaurants trouvés
+      </div>
+      <div class="results-sort">
+        <label for="sort-by">Trier par :</label>
+        <select id="sort-by">
+          <option value="rating-desc">Note (du plus élevé)</option>
+          <option value="rating-asc">Note (du plus bas)</option>
+          <option value="name-asc">Nom (A-Z)</option>
+          <option value="name-desc">Nom (Z-A)</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- Liste des restaurants -->
+    <div class="restaurant-card" data-id="faggio">
       <div class="restaurant-header">
         <h2 class="restaurant-name">Faggio</h2>
         <span class="rating">4.7/5</span>
       </div>
       <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=1');"></div>
       <div class="restaurant-details">
-        <p class="restaurant-cuisine">Cuisine Italienne • Pizzeria</p>
+        <p class="restaurant-cuisine">
+          Cuisine Italienne • Pizzeria
+          <span class="price-tag price-2">
+            <span>€</span><span>€</span><span>€</span>
+          </span>
+        </p>
+        <div class="tags-container">
+          <span class="tag">Pizza napolitaine</span>
+          <span class="tag">Pâtes fraîches</span>
+          <span class="tag">Végétarien</span>
+        </div>
         <p class="restaurant-address">Passage des Panoramas, 2ème Arrondissement, Paris</p>
         <div class="restaurant-review">
           <p class="review-text">"Une des meilleures pizzerias de Paris ! Le four au bois de hêtre fait toute la différence. La pâte est fine et croustillante, les garnitures sont généreuses et de qualité exceptionnelle. J'y retourne à chaque fois que je suis dans le quartier. À ne pas manquer si vous aimez la vraie pizza napolitaine."</p>
@@ -193,14 +316,23 @@
       </div>
     </div>
     
-    <div class="restaurant-card">
+    <div class="restaurant-card" data-id="la-bourse-et-la-vie">
       <div class="restaurant-header">
         <h2 class="restaurant-name">La Bourse et la Vie</h2>
         <span class="rating">4.6/5</span>
       </div>
       <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=2');"></div>
       <div class="restaurant-details">
-        <p class="restaurant-cuisine">Gastronomie Française • Bistrot</p>
+        <p class="restaurant-cuisine">
+          Gastronomie Française • Bistrot
+          <span class="price-tag price-3">
+            <span>€</span><span>€</span><span>€</span>
+          </span>
+        </p>
+        <div class="tags-container">
+          <span class="tag">Pot-au-feu</span>
+          <span class="tag">Viandes maturées</span>
+        </div>
         <p class="restaurant-address">12 Rue Vivienne, 2ème Arrondissement, Paris</p>
         <div class="restaurant-review">
           <p class="review-text">"Une expérience culinaire exceptionnelle ! Le pot-au-feu de foie gras est un régal absolu, et le service est attentionné sans être envahissant. L'ambiance est chaleureuse et le décor élégant. Un vrai bijou gastronomique qui respecte les traditions françaises tout en apportant une touche de modernité. Réservation indispensable !"</p>
@@ -209,14 +341,23 @@
       </div>
     </div>
     
-    <div class="restaurant-card">
+    <div class="restaurant-card" data-id="lentente">
       <div class="restaurant-header">
         <h2 class="restaurant-name">L'Entente</h2>
         <span class="rating">4.5/5</span>
       </div>
       <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=3');"></div>
       <div class="restaurant-details">
-        <p class="restaurant-cuisine">Brasserie Anglaise • Cuisine Britannique</p>
+        <p class="restaurant-cuisine">
+          Brasserie Anglaise • Cuisine Britannique
+          <span class="price-tag price-2">
+            <span>€</span><span>€</span><span>€</span>
+          </span>
+        </p>
+        <div class="tags-container">
+          <span class="tag">Sunday roast</span>
+          <span class="tag">Fish & Chips</span>
+        </div>
         <p class="restaurant-address">Près de l'Opéra Garnier, 2ème Arrondissement, Paris</p>
         <div class="restaurant-review">
           <p class="review-text">"Quelle belle surprise ! Une brasserie anglaise d'excellence à Paris. Le Sunday roast est tout simplement parfait, la viande fondante et les Yorkshire puddings aériens. Oliver Woodhead a su créer un lieu qui rend hommage aux spécialités britanniques avec une finesse toute française. L'endroit idéal pour redécouvrir la cuisine anglaise."</p>
@@ -225,14 +366,24 @@
       </div>
     </div>
     
-    <div class="restaurant-card">
+    <div class="restaurant-card" data-id="liza">
       <div class="restaurant-header">
         <h2 class="restaurant-name">Liza</h2>
         <span class="rating">4.5/5</span>
       </div>
       <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=4');"></div>
       <div class="restaurant-details">
-        <p class="restaurant-cuisine">Cuisine Libanaise • Restaurant Chic</p>
+        <p class="restaurant-cuisine">
+          Cuisine Libanaise • Restaurant Chic
+          <span class="price-tag price-3">
+            <span>€</span><span>€</span><span>€</span>
+          </span>
+        </p>
+        <div class="tags-container">
+          <span class="tag">Mezzes</span>
+          <span class="tag">Végétarien</span>
+          <span class="tag">Sans gluten</span>
+        </div>
         <p class="restaurant-address">14 Rue de la Banque, 2ème Arrondissement, Paris</p>
         <div class="restaurant-review">
           <p class="review-text">"Un des meilleurs restaurants libanais de Paris ! Les mezzes sont divins, particulièrement le hommos et les kebbés. La décoration est sublime et l'ambiance très agréable. Liza a su créer un lieu élégant où la cuisine libanaise est sublimée. Les desserts, notamment le mouhalabieh, sont une façon parfaite de terminer un repas exceptionnel."</p>
@@ -241,14 +392,23 @@
       </div>
     </div>
     
-    <div class="restaurant-card">
+    <div class="restaurant-card" data-id="les-noces-de-jeannette">
       <div class="restaurant-header">
         <h2 class="restaurant-name">Les Noces de Jeannette</h2>
         <span class="rating">4.4/5</span>
       </div>
       <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=5');"></div>
       <div class="restaurant-details">
-        <p class="restaurant-cuisine">Cuisine Française Traditionnelle • Bistrot</p>
+        <p class="restaurant-cuisine">
+          Cuisine Française Traditionnelle • Bistrot
+          <span class="price-tag price-2">
+            <span>€</span><span>€</span><span>€</span>
+          </span>
+        </p>
+        <div class="tags-container">
+          <span class="tag">Blanquette</span>
+          <span class="tag">Cuisine traditionnelle</span>
+        </div>
         <p class="restaurant-address">Près de la salle Favart, 2ème Arrondissement, Paris</p>
         <div class="restaurant-review">
           <p class="review-text">"Une valeur sûre des Grands Boulevards ! Malgré son nom inspiré d'un opéra comique, ce restaurant ne joue pas la comédie avec la qualité. Les plats traditionnels sont exécutés à la perfection, le service est efficace et chaleureux. J'apprécie particulièrement leur blanquette de veau et leurs desserts maison. Un établissement qui a su traverser les années en maintenant un niveau d'excellence constant."</p>
@@ -261,5 +421,51 @@
       <p>Sélection des 5 meilleurs restaurants du 2ème arrondissement de Paris basée sur les avis Google et critiques gastronomiques. Février 2025.</p>
     </footer>
   </div>
+  
+  <!-- Scripts -->
+  <script src="js/filter.js"></script>
+  <script>
+    // Toggle pour afficher/masquer les filtres sur mobile
+    document.getElementById('filter-toggle').addEventListener('click', function() {
+      const filterContainer = document.getElementById('filter-container');
+      filterContainer.classList.toggle('active');
+      this.textContent = filterContainer.classList.contains('active') ? 'Masquer les filtres' : 'Afficher les filtres';
+    });
+    
+    // Tri des restaurants
+    document.getElementById('sort-by').addEventListener('change', function() {
+      const sortValue = this.value;
+      const restaurantCards = document.querySelectorAll('.restaurant-card');
+      const restaurantsList = document.querySelector('.container');
+      
+      // Convertir en tableau pour pouvoir trier
+      const cardsArray = Array.from(restaurantCards);
+      
+      cardsArray.sort((a, b) => {
+        if (sortValue === 'rating-desc') {
+          const ratingA = parseFloat(a.querySelector('.rating').textContent);
+          const ratingB = parseFloat(b.querySelector('.rating').textContent);
+          return ratingB - ratingA;
+        } else if (sortValue === 'rating-asc') {
+          const ratingA = parseFloat(a.querySelector('.rating').textContent);
+          const ratingB = parseFloat(b.querySelector('.rating').textContent);
+          return ratingA - ratingB;
+        } else if (sortValue === 'name-asc') {
+          const nameA = a.querySelector('.restaurant-name').textContent;
+          const nameB = b.querySelector('.restaurant-name').textContent;
+          return nameA.localeCompare(nameB);
+        } else if (sortValue === 'name-desc') {
+          const nameA = a.querySelector('.restaurant-name').textContent;
+          const nameB = b.querySelector('.restaurant-name').textContent;
+          return nameB.localeCompare(nameA);
+        }
+      });
+      
+      // Réinsérer les éléments dans le bon ordre
+      cardsArray.forEach(card => {
+        restaurantsList.appendChild(card);
+      });
+    });
+  </script>
 </body>
 </html>
