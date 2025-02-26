@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les 5 Meilleurs Restaurants du 2ème Arrondissement de Paris</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --light-gray: #ecf0f1;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --border-radius: 8px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+    
+    h1 {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    
+    .restaurant-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      overflow: hidden;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .restaurant-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .restaurant-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .rating {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+    
+    .restaurant-image {
+      height: 250px;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .restaurant-details {
+      padding: 20px;
+    }
+    
+    .restaurant-cuisine {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    
+    .restaurant-address {
+      color: #777;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+    
+    .restaurant-review {
+      background-color: var(--light-gray);
+      padding: 15px;
+      border-radius: var(--border-radius);
+      position: relative;
+    }
+    
+    .review-text {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    
+    .reviewer {
+      text-align: right;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    
+    .restaurant-review:before {
+      content: """;
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      font-size: 40px;
+      color: rgba(0, 0, 0, 0.1);
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .restaurant-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .rating {
+        margin-top: 10px;
+      }
+      
+      .restaurant-image {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Les 5 Meilleurs Restaurants</h1>
+      <p class="subtitle">2ème Arrondissement de Paris</p>
+    </header>
+    
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <h2 class="restaurant-name">Faggio</h2>
+        <span class="rating">4.7/5</span>
+      </div>
+      <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=1');"></div>
+      <div class="restaurant-details">
+        <p class="restaurant-cuisine">Cuisine Italienne • Pizzeria</p>
+        <p class="restaurant-address">Passage des Panoramas, 2ème Arrondissement, Paris</p>
+        <div class="restaurant-review">
+          <p class="review-text">"Une des meilleures pizzerias de Paris ! Le four au bois de hêtre fait toute la différence. La pâte est fine et croustillante, les garnitures sont généreuses et de qualité exceptionnelle. J'y retourne à chaque fois que je suis dans le quartier. À ne pas manquer si vous aimez la vraie pizza napolitaine."</p>
+          <p class="reviewer">— Marie L.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <h2 class="restaurant-name">La Bourse et la Vie</h2>
+        <span class="rating">4.6/5</span>
+      </div>
+      <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=2');"></div>
+      <div class="restaurant-details">
+        <p class="restaurant-cuisine">Gastronomie Française • Bistrot</p>
+        <p class="restaurant-address">12 Rue Vivienne, 2ème Arrondissement, Paris</p>
+        <div class="restaurant-review">
+          <p class="review-text">"Une expérience culinaire exceptionnelle ! Le pot-au-feu de foie gras est un régal absolu, et le service est attentionné sans être envahissant. L'ambiance est chaleureuse et le décor élégant. Un vrai bijou gastronomique qui respecte les traditions françaises tout en apportant une touche de modernité. Réservation indispensable !"</p>
+          <p class="reviewer">— Thomas D.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <h2 class="restaurant-name">L'Entente</h2>
+        <span class="rating">4.5/5</span>
+      </div>
+      <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=3');"></div>
+      <div class="restaurant-details">
+        <p class="restaurant-cuisine">Brasserie Anglaise • Cuisine Britannique</p>
+        <p class="restaurant-address">Près de l'Opéra Garnier, 2ème Arrondissement, Paris</p>
+        <div class="restaurant-review">
+          <p class="review-text">"Quelle belle surprise ! Une brasserie anglaise d'excellence à Paris. Le Sunday roast est tout simplement parfait, la viande fondante et les Yorkshire puddings aériens. Oliver Woodhead a su créer un lieu qui rend hommage aux spécialités britanniques avec une finesse toute française. L'endroit idéal pour redécouvrir la cuisine anglaise."</p>
+          <p class="reviewer">— Jean-Pierre M.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <h2 class="restaurant-name">Liza</h2>
+        <span class="rating">4.5/5</span>
+      </div>
+      <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=4');"></div>
+      <div class="restaurant-details">
+        <p class="restaurant-cuisine">Cuisine Libanaise • Restaurant Chic</p>
+        <p class="restaurant-address">14 Rue de la Banque, 2ème Arrondissement, Paris</p>
+        <div class="restaurant-review">
+          <p class="review-text">"Un des meilleurs restaurants libanais de Paris ! Les mezzes sont divins, particulièrement le hommos et les kebbés. La décoration est sublime et l'ambiance très agréable. Liza a su créer un lieu élégant où la cuisine libanaise est sublimée. Les desserts, notamment le mouhalabieh, sont une façon parfaite de terminer un repas exceptionnel."</p>
+          <p class="reviewer">— Sarah B.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="restaurant-card">
+      <div class="restaurant-header">
+        <h2 class="restaurant-name">Les Noces de Jeannette</h2>
+        <span class="rating">4.4/5</span>
+      </div>
+      <div class="restaurant-image" style="background-image: url('https://picsum.photos/800/400?random=5');"></div>
+      <div class="restaurant-details">
+        <p class="restaurant-cuisine">Cuisine Française Traditionnelle • Bistrot</p>
+        <p class="restaurant-address">Près de la salle Favart, 2ème Arrondissement, Paris</p>
+        <div class="restaurant-review">
+          <p class="review-text">"Une valeur sûre des Grands Boulevards ! Malgré son nom inspiré d'un opéra comique, ce restaurant ne joue pas la comédie avec la qualité. Les plats traditionnels sont exécutés à la perfection, le service est efficace et chaleureux. J'apprécie particulièrement leur blanquette de veau et leurs desserts maison. Un établissement qui a su traverser les années en maintenant un niveau d'excellence constant."</p>
+          <p class="reviewer">— François L.</p>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Sélection des 5 meilleurs restaurants du 2ème arrondissement de Paris basée sur les avis Google et critiques gastronomiques. Février 2025.</p>
+    </footer>
+  </div>
+</body>
+</html>
